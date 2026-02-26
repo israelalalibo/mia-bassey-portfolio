@@ -1,0 +1,36 @@
+---
+
+### The Prompt for Claude
+
+**Role:** You are an expert Web Developer and Brand Strategist specializing in portfolios for high-end athletes and performers.
+
+**Context:** I am building a personal portfolio website for **Mia Bassey**, a Manchester-based contortionist and fitness influencer (Instagram-based). The goal of the site is to transition her presence from "social media creator" to a "professional brand" for booking performance gigs, brand partnerships, and fitness coaching.
+
+**Aesthetic Goal:** "Modern, Athletic, and Elegant." Use a dark mode palette (charcoal, deep blacks) with high-contrast accent colors (like electric blue or neon lime) to reflect the gym environment, but with sophisticated typography to reflect the art of contortion.
+
+**Task:** Please provide a detailed blueprint for this website and build it from start to finish, including:
+
+1. **Site Structure:**
+   * **Hero Section:** A high-impact landing with a video background capability.
+   * **The "Dual-Threat" About Section:** How to balance her identity as both a power-lifting/gym athlete and a flexible contortionist.
+   * **Portfolio/Gallery:** A layout that handles both high-res stills and short-form video (Reels style).
+   * **Services/Booking:** Sections for "Performance Inquiries" (Circus/Events) and "Fitness Partnerships."
+   * **Contact:** A clean, professional form.
+
+2. **Copywriting Guidelines:** Give me three taglines that capture her brand (e.g., "Strength Meets Suppleness").
+3. **Technical Stack Recommendation:** Suggest the best platform (e.g., Framer, Webflow, or custom React) for someone who needs high visual fidelity and easy updates.
+4. **Interactive Elements:** Suggest 2-3 unique "wow" features (e.g., a scroll-triggered animation showing her transition into a contortion pose).
+
+**Output Style:** Professional, structured, and ready for users to visit. It will be hosted on Vercel. Make sure to add the images already in the root directory of the folder
+
+---
+
+### A few tips for when you use this:
+
+* **The "Manchester" Edge:** Since she's based in Manchester, you might want to ask Claude to include a "Local Impact" section if she does local workshops or personal training in the city.
+* **Visual Assets:** Since I can’t see her latest posts, make sure you have high-quality versions of her best Instagram content ready. A portfolio like this lives or dies by the quality of the photography.
+* **The "Hook":** Most fitness sites are boring. Because she is a contortionist, emphasize the **"Strength + Flexibility"** paradox. It's her biggest USP (Unique Selling Point).
+
+**Would you like me to draft a few "About Me" bio options for her based on that Manchester/Contortionist/Gym mix?**
+
+---
