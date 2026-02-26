@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'performance',
   ],
   openGraph: {
-    title: 'Mia Bassey — Where Power Bends',
+    title: 'Mia Bassey — Bent not Broken',
     description:
       'Certified Stretch & Flexibility Coach. Contortionist. Manchester-based performer available for bookings.',
     images: ['/images/profile.jpg'],
