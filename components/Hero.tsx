@@ -127,9 +127,9 @@ export default function Hero() {
             className="font-serif font-light leading-[1.05] mb-4"
             style={{ fontSize: 'clamp(3.5rem, 8vw, 7rem)' }}
           >
-            <span className="block text-white">Where</span>
-            <span className="block italic text-gradient-blue">Power</span>
-            <span className="block text-white">Bends.</span>
+            <span className="block text-white">Bent</span>
+            <span className="block italic text-gradient-blue">Not</span>
+            <span className="block text-white">Broken.</span>
           </motion.h1>
 
           {/* Animated slide caption */}
