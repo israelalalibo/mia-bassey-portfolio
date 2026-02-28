@@ -142,25 +142,26 @@ export default function About() {
               className="font-sans text-white/60 leading-relaxed mb-4 text-base"
             >
               My name is <strong className="text-white font-medium">Mia Bassey</strong> —
-              Certified Stretch & Flexibility Coach, holding a BSc in Biochemistry and
-              currently pursuing my MSc in Project Management.
+              Certified Stretch & Flexibility Coach, with a BSc degree in Biochemistry,
+              and currently pursuing my MSc in Project Management.
             </motion.p>
             <motion.p
               variants={itemVariants}
               className="font-sans text-white/60 leading-relaxed mb-4 text-base"
             >
-              My journey has been one of movement and growth. From Lagos to Uyo,
-              through NYSC, and now the United Kingdom — every step has been a search
-              for the life I envisioned. One where I could create something meaningful,
-              inspire others, and leave my mark.
+              My journey has been one of movement and growth. From Lagos — Uyo — back
+              to Lagos for my NYSC — and now the United Kingdom for my Master&apos;s
+              degree. Every step has been a search for the life I envisioned — one
+              where I could create something meaningful, inspire others, and leave my mark.
             </motion.p>
             <motion.p
               variants={itemVariants}
               className="font-sans text-white/60 leading-relaxed mb-10 text-base"
             >
-              Now I&apos;m in a new chapter: building, evolving, and sharing the gift
-              of movement, flexibility, and strength with those ready to unlock their
-              fullest potential.
+              Now, I&apos;m in a new country, a new environment, with the same dreams
+              but even bigger goals. This chapter is about building, evolving, and
+              sharing the gift of movement, flexibility, and strength with those ready
+              to unlock their fullest potential.
             </motion.p>
 
             {/* Traits grid */}
@@ -191,8 +192,9 @@ export default function About() {
               className="mt-10 pt-8 border-t border-brand-border flex items-center gap-4"
             >
               <div>
+                <p className="font-sans text-white/60 text-sm mb-3">Here&apos;s to new beginnings 🥂 🌍✨</p>
                 <p className="font-serif italic text-xl text-white">Your Flexibility Coach,</p>
-                <p className="font-serif text-2xl text-brand-blue mt-1">Mia 🌸</p>
+                <p className="font-serif text-2xl text-brand-blue mt-1">Mia 🌸🧘🏽‍♀️✨</p>
               </div>
             </motion.div>
           </motion.div>
