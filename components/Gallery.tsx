@@ -12,6 +12,7 @@ type MediaItem = {
   caption: string;
   category: 'contortion' | 'fitness' | 'lifestyle';
   span?: 'tall' | 'wide' | 'normal';
+  fit?: 'cover' | 'contain';
 };
 
 const mediaItems: MediaItem[] = [
@@ -39,76 +40,95 @@ const mediaItems: MediaItem[] = [
     caption: "If your art doesn't consume you, you're not passionate enough",
     category: 'contortion',
     span: 'wide',
+    fit: 'contain',
   },
   {
     id: 8,
     type: 'video',
-    src: '/videos/first-pose.mp4',
-    poster: '/images/profile.jpg',
-    caption: "When I hit that first pose, just know it\u2019s about to get serious",
+    src: '/videos/first-pose-2.mp4',
+    caption: 'When I hit that first pose, just know it\u2019s about to get serious',
     category: 'contortion',
     span: 'normal',
   },
   {
     id: 9,
     type: 'video',
-    src: '/videos/stretch-together.mp4',
-    poster: '/images/symmetry.jpg',
-    caption: 'I still think about this day we stretched together',
+    src: '/videos/zero-trauma.mp4',
+    caption: 'Zero trauma in these hips \u2728',
     category: 'contortion',
     span: 'tall',
   },
-  // ── Fitness ────────────────────────────────────────────────────
   {
-    id: 4,
+    id: 13,
     type: 'video',
-    src: '/videos/yoga.mp4',
-    poster: '/images/lifestyle2.jpg',
-    caption: 'My heart is in the right place',
-    category: 'fitness',
+    src: '/videos/split-september.mp4',
+    caption: "Split\u2019In September has come to an end and I\u2019m so proud",
+    category: 'contortion',
     span: 'normal',
   },
+  // ── Fitness ────────────────────────────────────────────────────
   {
     id: 10,
     type: 'video',
-    src: '/videos/move-with-intention.mp4',
-    poster: '/images/lifestyle1.jpg',
-    caption: "Learn to MOVE with INTENTION \u2014 life isn\u2019t moving too fast, you are",
+    src: '/videos/flexibility-training.mp4',
+    caption: 'Flexibility training doesn\u2019t just give you flexible muscles \u2014 it fuels your mind',
     category: 'fitness',
     span: 'wide',
   },
   {
     id: 11,
     type: 'video',
-    src: '/videos/fitness-routine.mp4',
-    poster: '/images/lifestyle2.jpg',
-    caption: 'Been doing this 3–4 times a week for the past 2 years',
+    src: '/videos/straddle-blueprint.mp4',
+    caption: 'My blueprint for a stronger straddle stretch',
     category: 'fitness',
     span: 'normal',
   },
+  {
+    id: 14,
+    type: 'video',
+    src: '/videos/no-stopping-now.mp4',
+    caption: "There\u2019s no stopping now \ud83d\ude24",
+    category: 'fitness',
+    span: 'tall',
+  },
   // ── Lifestyle ──────────────────────────────────────────────────
   {
-    id: 5,
+    id: 4,
     type: 'image',
-    src: '/images/lifestyle1.jpg',
-    caption: 'Busy, healthy & out the way',
+    src: '/images/bw-1.jpg',
+    caption: 'Movement is my language',
     category: 'lifestyle',
     span: 'normal',
   },
   {
-    id: 6,
-    type: 'video',
-    src: '/videos/lifestyle.mp4',
-    poster: '/images/lifestyle1.jpg',
-    caption: 'Living the vision',
+    id: 5,
+    type: 'image',
+    src: '/images/bw-2.jpg',
+    caption: 'In my element',
     category: 'lifestyle',
     span: 'tall',
   },
   {
+    id: 6,
+    type: 'image',
+    src: '/images/bw-substack-1.jpg',
+    caption: 'Always creating',
+    category: 'lifestyle',
+    span: 'normal',
+  },
+  {
     id: 7,
     type: 'image',
-    src: '/images/lifestyle2.jpg',
-    caption: 'Grateful for every decision I made early in life',
+    src: '/images/bw-substack-2.jpg',
+    caption: 'The vision, unfiltered',
+    category: 'lifestyle',
+    span: 'wide',
+  },
+  {
+    id: 15,
+    type: 'video',
+    src: '/videos/reintroduce-myself.mp4',
+    caption: 'Allow me to (re)introduce myself \u2728',
     category: 'lifestyle',
     span: 'normal',
   },
@@ -116,8 +136,7 @@ const mediaItems: MediaItem[] = [
     id: 12,
     type: 'video',
     src: '/videos/clearing-draft.mp4',
-    poster: '/images/lifestyle2.jpg',
-    caption: 'Clearing my draft — always creating',
+    caption: 'Clearing my draft \u2014 always creating',
     category: 'lifestyle',
     span: 'normal',
   },
@@ -228,7 +247,7 @@ export default function Gallery() {
                     src={item.src}
                     alt={item.caption}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className={`${item.fit === 'contain' ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-105`}
                     sizes="(max-width: 768px) 50vw, 33vw"
                   />
                 ) : (

@@ -9,7 +9,7 @@ const services = [
     title: 'Contortion & Performance',
     tagline: 'The art that stops rooms.',
     accent: 'brand-blue',
-    accentHex: '#00D4FF',
+    accentHex: '#F4C6C6',
     icon: '🎭',
     description:
       'Book Mia for corporate events, circus showcases, fashion shows, music videos, and brand activations. Her unique blend of athletic power and contortion artistry creates visuals that are impossible to ignore.',
@@ -29,7 +29,7 @@ const services = [
     title: 'Fitness & Flexibility Coaching',
     tagline: 'Unlock your body\'s fullest potential.',
     accent: 'brand-lime',
-    accentHex: '#AAFF00',
+    accentHex: '#E8D4C4',
     icon: '🧘🏽‍♀️',
     description:
       'As a certified Stretch & Flexibility Coach with a Biochemistry degree, Mia combines scientific knowledge with lived movement experience. Her coaching is tailored, evidence-based, and transformational.',
@@ -42,6 +42,26 @@ const services = [
     ],
     cta: 'Book a Coaching Session',
     note: 'In-person (Manchester) & Online',
+  },
+  {
+    id: 'modelling',
+    category: 'Modelling',
+    title: 'Modelling & Creative Direction',
+    tagline: 'The body as the ultimate creative asset.',
+    accent: 'brand-blue',
+    accentHex: '#F4C6C6',
+    icon: '📸',
+    description:
+      'Mia brings a rare combination of athletic physique, contortion ability, and natural on-camera presence to every project. Available for brand campaigns, editorial shoots, commercial ads, and music video appearances.',
+    offerings: [
+      'Brand campaign & advertising shoots',
+      'Editorial & fashion photography',
+      'Music video appearances',
+      'Commercial ads & media production',
+      'Collaborations with media houses & creatives',
+    ],
+    cta: 'Enquire About Modelling',
+    note: 'Available UK-wide & internationally',
   },
 ];
 
@@ -85,12 +105,12 @@ export default function Services() {
           className="font-serif font-light leading-tight mb-16"
           style={{ fontSize: 'clamp(2.2rem, 4vw, 3.5rem)' }}
         >
-          Two Ways to{' '}
+          Three Ways to{' '}
           <span className="italic text-gradient-blue">Collaborate</span>
         </motion.h2>
 
         {/* Service cards */}
-        <div className="grid lg:grid-cols-2 gap-6 mb-20">
+        <div className="grid lg:grid-cols-3 gap-6 mb-20">
           {services.map((service, i) => (
             <motion.div
               key={service.id}

@@ -2,6 +2,9 @@
   "permissions": {
     "additionalDirectories": [
       "C:\\Users\\israe\\.claude\\projects\\c--MiaBassey"
+    ],
+    "allow": [
+      "Bash(for f in *.mp4)"
     ]
   }
 }
