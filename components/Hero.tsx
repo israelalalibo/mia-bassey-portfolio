@@ -1,29 +1,35 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 type Slide = {
+  type: 'image' | 'video';
   src: string;
   label: string;
 };
 
 const slides: Slide[] = [
-  { src: '/videos/yoga.mp4',              label: 'My heart is in the right place' },
-  { src: '/videos/first-pose.mp4',        label: 'When I hit that first pose…' },
-  { src: '/videos/move-with-intention.mp4', label: 'Learn to move with intention' },
-  { src: '/videos/fitness-routine.mp4',   label: '3–4 times a week, every week' },
-  { src: '/videos/lifestyle.mp4',         label: 'Busy, healthy & out the way' },
-  { src: '/videos/stretch-together.mp4',  label: 'Moving together' },
-  { src: '/videos/clearing-draft.mp4',    label: 'Always creating' },
+  { type: 'video', src: '/videos/first-pose-2.mp4',        label: 'When I hit that first pose…' },
+  { type: 'image', src: '/images/bw-3.jpg',                label: 'Bend, but never break' },
+  { type: 'video', src: '/videos/zero-trauma.mp4',         label: 'Zero trauma in these hips ✨' },
+  { type: 'image', src: '/images/symmetry.jpg',            label: 'Symmetry · @mjphotography_official' },
+  { type: 'video', src: '/videos/flexibility-training.mp4', label: 'Flexibility training fuels the mind' },
+  { type: 'image', src: '/images/bw-1.jpg',                label: 'Movement is my language' },
+  { type: 'video', src: '/videos/no-stopping-now.mp4',     label: 'There\'s no stopping now' },
+  { type: 'image', src: '/images/bw-substack-1.jpg',       label: 'Always creating' },
+  { type: 'video', src: '/videos/clearing-draft.mp4',      label: 'Clearing my draft — always creating' },
+  { type: 'image', src: '/images/bw-2.jpg',                label: 'In my element' },
 ];
 
-// Max time per slide before auto-advancing (ms)
-const SLIDE_DURATION = 9000;
+const SLIDE_DURATION = 6000;
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
-  const [loaded, setLoaded] = useState<boolean[]>(Array(slides.length).fill(false));
+  const [loaded, setLoaded] = useState<boolean[]>(() =>
+    slides.map((s) => s.type === 'image')
+  );
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -31,18 +37,19 @@ export default function Hero() {
     setCurrent((prev) => (prev + 1) % slides.length);
   }, []);
 
-  // Auto-advance on video end or after SLIDE_DURATION
   const resetTimer = useCallback(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(advance, SLIDE_DURATION);
   }, [advance]);
 
-  // Play current video when index changes
   useEffect(() => {
-    const vid = videoRefs.current[current];
-    if (vid) {
-      vid.currentTime = 0;
-      vid.play().catch(() => {});
+    const slide = slides[current];
+    if (slide.type === 'video') {
+      const vid = videoRefs.current[current];
+      if (vid) {
+        vid.currentTime = 0;
+        vid.play().catch(() => {});
+      }
     }
     resetTimer();
     return () => {
@@ -52,48 +59,56 @@ export default function Hero() {
 
   const goTo = (i: number) => {
     if (i === current) return;
-    const vid = videoRefs.current[current];
-    if (vid) vid.pause();
+    const slide = slides[current];
+    if (slide.type === 'video') {
+      const vid = videoRefs.current[current];
+      if (vid) vid.pause();
+    }
     setCurrent(i);
   };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* ── Video stack ── */}
+      {/* ── Media stack ── */}
       <div className="absolute inset-0 z-0">
-        {slides.map((slide, i) => (
-          <video
-            key={slide.src}
-            ref={(el) => { videoRefs.current[i] = el; }}
-            src={slide.src}
-            autoPlay={i === 0}
-            loop={false}
-            muted
-            playsInline
-            onCanPlay={() =>
-              setLoaded((prev) => {
-                const next = [...prev];
-                next[i] = true;
-                return next;
-              })
-            }
-            onEnded={() => { if (i === current) advance(); }}
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
-            style={{
-              opacity: i === current && loaded[i] ? 1 : 0,
-              pointerEvents: 'none',
-            }}
-          />
-        ))}
-
-        {/* Fallback image until first video loads */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-top transition-opacity duration-700"
-          style={{
-            backgroundImage: "url('/images/profile.jpg')",
-            opacity: loaded[current] ? 0 : 1,
-          }}
-        />
+        {slides.map((slide, i) =>
+          slide.type === 'video' ? (
+            <video
+              key={slide.src}
+              ref={(el) => { videoRefs.current[i] = el; }}
+              src={slide.src}
+              autoPlay={i === 0}
+              loop={false}
+              muted
+              playsInline
+              onCanPlay={() =>
+                setLoaded((prev) => {
+                  const next = [...prev];
+                  next[i] = true;
+                  return next;
+                })
+              }
+              onEnded={() => { if (i === current) advance(); }}
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+              style={{ opacity: i === current && loaded[i] ? 1 : 0, pointerEvents: 'none' }}
+            />
+          ) : (
+            <div
+              key={slide.src}
+              className="absolute inset-0 transition-opacity duration-700"
+              style={{ opacity: i === current ? 1 : 0, pointerEvents: 'none' }}
+            >
+              <Image
+                src={slide.src}
+                alt={slide.label}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority={i === 0}
+              />
+            </div>
+          )
+        )}
 
         {/* Gradient overlays */}
         <div className="absolute inset-0 video-overlay" />

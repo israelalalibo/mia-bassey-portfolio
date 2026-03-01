@@ -20,8 +20,8 @@ const mediaItems: MediaItem[] = [
   {
     id: 1,
     type: 'image',
-    src: '/images/profile.jpg',
-    caption: 'The Art of Balance',
+    src: '/images/bw-3.jpg',
+    caption: 'Bend, but never break',
     category: 'contortion',
     span: 'tall',
   },
